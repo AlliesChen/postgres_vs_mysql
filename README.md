@@ -12,20 +12,24 @@ If you use `venv`:
 ## Project Structure
 
 ```bash
-project/
-├── db/
-│   ├── __init__.py
-│   ├── base.py               # Base database class
-│   ├── postgres.py           # PostgreSQL-specific schema and connection class
-│   ├── mysql.py              # MySQL-specific schema and connection class (future support)
-├── data/
-│   ├── __init__.py
-│   ├── data_resolver.py      # Class to handle CSV loading and data preparation
-├── scripts/
-│   ├── __init__.py
-│   ├── main.py               # Main script to run the pipeline
-├── config.py                 # Configuration (e.g., database URL)
-└── bookings.csv              # Sample CSV file
+project-root/
+├── docker-compose.yml        # Defines and orchestrates MySQL, PostgreSQL, and other services
+├── Dockerfile                # For your Go backend (or separate Dockerfiles if needed)
+├── init/
+│   ├── start_services.sh     # Script to run Docker Compose and wait for databases to be ready
+│   ├── db/
+│   │   ├── __init__.py
+│   │   ├── base.py               # Base database class
+│   │   ├── postgres.py           # PostgreSQL-specific schema and connection class
+│   │   ├── mysql.py              # MySQL-specific schema and connection class (future support)
+│   ├── data/
+│   │   ├── __init__.py
+│   │   ├── data_resolver.py      # Class to handle CSV loading and data preparation
+│   ├── scripts/
+│   │   ├── __init__.py
+│   │   ├── main.py               # Main script to run the pipeline
+└── hotel_reservations.csv        # Sample CSV file
+└── README.md
 ```
 
 ## Docker Compose Setting
