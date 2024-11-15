@@ -5,10 +5,9 @@ import (
 	"gorm.io/gorm"
 )
 
-type Product struct {
-	gorm.Model
-	Code  string
-	Price uint
+type Booking struct {
+	BookingId string `gorm:"primaryKey;column:booking_id"`
+	Price     uint
 }
 
 func main() {
@@ -18,10 +17,10 @@ func main() {
 	}
 
 	// Migrate the schema
-	db.AutoMigrate(&Product{})
+	db.AutoMigrate(&Booking{})
 
 	// Create
-	db.Create(&Product{Code: "D42", Price: 100})
+	db.Create(&Booking{Code: "D42", Price: 100})
 
 	// Read
 	var product Product

@@ -2,7 +2,7 @@ from sqlalchemy import Table, Column, Integer, String, ForeignKey
 from .base import BaseDatabase
 
 class PostgresDatabase(BaseDatabase):
-    def use_foreign_keys(self) -> tuple[Column, ...]:
+    def use_foreign_keys(self) -> list[Column]:
         type_of_meal_plan = Column(
             'type_of_meal_plan', String(50),
             ForeignKey('meal_plans.meal_plan_name'), nullable=False)
@@ -14,7 +14,7 @@ class PostgresDatabase(BaseDatabase):
             ForeignKey('booking_statuses.booking_status_name'), nullable=False)
 
         return type_of_meal_plan, room_type_reserved, market_segment_type, booking_status
-    def use_associate_cols(self) -> tuple[Column, ...]:
+    def use_associate_cols(self) -> list[Column]:
         type_of_meal_plan = Column('type_of_meal_plan', String(50), nullable=False)
         room_type_reserved = Column('room_type_reserved', String(50), nullable=False)
         market_segment_type = Column('market_segment_type', String(50), nullable=False)
