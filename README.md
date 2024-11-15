@@ -35,6 +35,8 @@ project-root/
 ## Docker Compose Setting
 
 ```yml
+version: '3.9'
+
 networks:
   my_network:
     driver: bridge
@@ -95,7 +97,7 @@ services:
       - MYSQL_PASSWORD=example
       - MYSQL_DATABASE=mysql
     volumes:
-      - .:/app
+      - ./init:/app
     networks:
       - my_network
 ```
