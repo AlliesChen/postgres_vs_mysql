@@ -35,6 +35,10 @@ project-root/
 ## Docker Compose Setting
 
 ```yml
+networks:
+  my_network:
+    driver: bridge
+
 services:
   postgres:
     image: postgres
@@ -94,8 +98,4 @@ services:
       - .:/app
     networks:
       - my_network
-
-networks:
-  my_network:
-    driver: bridge
 ```
