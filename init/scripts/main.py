@@ -1,4 +1,3 @@
-import pandas as pd
 import os
 from db.postgres import PostgresDatabase
 from db.mysql import MysqlDatabase
